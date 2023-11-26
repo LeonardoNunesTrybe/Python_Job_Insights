@@ -19,5 +19,9 @@ class ProcessJobs:
             jobs.append(job['job_type'])
         return list(set(jobs))
 
-    def filter_by_multiple_criteria(self) -> List[dict]:
-        pass
+    def filter_by_multiple_criteria(self, jobs, filter_criteria) -> List[dict]:
+        filtered_jobs = []
+        for job in jobs:
+            if job['industry'] == filter_criteria['industry'] and job['job_type'] == filter_criteria['job_type']:
+                filtered_jobs.append(job)
+        return filtered_jobs
