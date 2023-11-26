@@ -37,4 +37,11 @@ class ProcessSalaries(ProcessJobs):
     def filter_by_salary_range(
         self, jobs: List[dict], salary: Union[str, int]
     ) -> List[Dict]:
-        pass
+        list = []
+        for job in jobs:
+            try:
+                if self.matches_salary_range(job, salary):
+                    list.append(job)
+            except ValueError:
+                pass
+        return list
